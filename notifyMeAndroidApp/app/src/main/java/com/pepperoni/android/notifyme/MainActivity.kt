@@ -2,6 +2,8 @@ package com.pepperoni.android.notifyme
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.SpannableStringBuilder
 import android.util.Log
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
@@ -33,8 +35,7 @@ class MainActivity : AppCompatActivity() {
                 val token = task.result?.token
 
                 // Log and toast
-                main_text.text = token
-                Log.d("TAGGGGGGGGG", token)
+                main_text.text = SpannableStringBuilder(token)
             })
     }
 }

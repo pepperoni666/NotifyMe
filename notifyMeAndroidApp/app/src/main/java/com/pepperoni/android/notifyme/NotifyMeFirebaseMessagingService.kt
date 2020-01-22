@@ -21,11 +21,13 @@ class NotifyMeFirebaseMessagingService: FirebaseMessagingService() {
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d("TAG", "From: ${remoteMessage.from}")
 
+        remoteMessage.notification?.let {
+            CustomNotificationManager.instance.showNotification(applicationContext, it.title ?: "default", it.body ?: "default")
+        }
+
         // Check if message contains a data payload.
         remoteMessage.data.isNotEmpty().let {
             Log.d("TAG", "Message data payload: " + remoteMessage.data)
-
-            CustomNotificationManager.instance.showNotification(applicationContext)
 
             if (/* Check if data needs to be processed by long running job */ true) {
                 // For long-running tasks (10 seconds or more) use WorkManager.
