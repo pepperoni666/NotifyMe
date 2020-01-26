@@ -22,7 +22,7 @@ class NotifyMeFirebaseMessagingService: FirebaseMessagingService() {
         Log.d("TAG", "From: ${remoteMessage.from}")
 
         remoteMessage.notification?.let {
-            CustomNotificationManager.instance.showNotification(applicationContext, it.title ?: "default", it.body ?: "default")
+            //CustomNotificationManager.instance.showNotification(applicationContext, it.title ?: "default", it.body ?: "default")
         }
 
         // Check if message contains a data payload.

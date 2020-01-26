@@ -32,7 +32,7 @@ class CustomNotificationManager private constructor(){
 
         val deleteIntent: PendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
         val builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
-            .setSmallIcon(context.get)
+            //.setSmallIcon(context.get)
             .setContentTitle(title)
             .setContentText(content)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
