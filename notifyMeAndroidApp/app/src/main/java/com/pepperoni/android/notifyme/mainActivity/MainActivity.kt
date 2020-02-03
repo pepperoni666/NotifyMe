@@ -1,15 +1,22 @@
-package com.pepperoni.android.notifyme
+package com.pepperoni.android.notifyme.mainActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.iid.FirebaseInstanceId
+import com.pepperoni.android.notifyme.NotifyMeApplication
+import com.pepperoni.android.notifyme.R
+import com.pepperoni.android.notifyme.mainActivity.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val model: MainActivityViewModel by viewModels()
 
     private lateinit var app: NotifyMeApplication
 
@@ -40,11 +47,11 @@ class MainActivity : AppCompatActivity() {
                         .addOnCompleteListener { idTask ->
                             if (idTask.isSuccessful) {
                                 idTask.result?.token?.let {
-                                    app.db.collection("receivers").document(it).set(
+                                    FirebaseFirestore.getInstance().collection("receivers").document(it).set(
                                         hashMapOf(
-                                            "test" to 222
+                                            "receiverId" to it
                                         )).addOnSuccessListener {
-                                        Toast.makeText(baseContext, "Data saved successfully.",
+                                        Toast.makeText(baseContext, "Authentication success.",
                                             Toast.LENGTH_SHORT).show()
                                     }
                                 }

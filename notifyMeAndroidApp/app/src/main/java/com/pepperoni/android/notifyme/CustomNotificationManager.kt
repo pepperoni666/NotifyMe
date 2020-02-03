@@ -8,6 +8,7 @@ import androidx.core.app.NotificationManagerCompat
 import com.pepperoni.android.notifyme.NotificationBuildingData.NOTIFICATION_CHANNEL_ID
 import com.pepperoni.android.notifyme.NotificationBuildingData.NOTIFICATION_TAG
 import com.pepperoni.android.notifyme.NotificationBuildingData.createNotificationChannels
+import com.pepperoni.android.notifyme.mainActivity.MainActivity
 
 class CustomNotificationManager private constructor(){
 
